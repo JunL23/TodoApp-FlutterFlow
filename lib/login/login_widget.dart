@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -796,6 +797,32 @@ class _LoginWidgetState extends State<LoginWidget>
 
                               context.goNamedAuth(
                                   'onboarding', context.mounted);
+
+                              _model.apiResult9fy = await SendemailCall.call(
+                                to: _model.signupEmailTextController.text,
+                                subject: 'Welcome to the Todo app!',
+                                text:
+                                    'Welcome to the Todo app! Thank you for choosing our app and please let me know if you have suggestions!',
+                              );
+
+                              if (!(_model.apiResult9fy?.succeeded ?? true)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Error encountered: Welcome email could not be sent at this time.',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
+
+                              safeSetState(() {});
                             },
                             text: 'Sign up',
                             options: FFButtonOptions(

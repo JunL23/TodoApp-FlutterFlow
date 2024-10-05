@@ -59,7 +59,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             ),
             decoration: const BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 30.0, 24.0, 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -70,6 +70,31 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 400.0,
+                          ),
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primary,
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(5.0),
+                              bottomRight: Radius.circular(5.0),
+                              topLeft: Radius.circular(5.0),
+                              topRight: Radius.circular(5.0),
+                            ),
+                          ),
+                          child: Text(
+                            'Welcome! Please check your email for a welcome message!',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  fontSize: 12.0,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 2.0,
+                                ),
+                          ),
+                        ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
